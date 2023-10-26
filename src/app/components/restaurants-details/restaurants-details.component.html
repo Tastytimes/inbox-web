@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="main-container" *ngIf="restDetails">
+        <p>Restuarnant Name: {{restDetails.name}}</p>
+        <p>City: {{restDetails.city}}</p>
+        <p>Description : {{restDetails.description}}</p>
+    </div>
+    <hr>
+    <div class="card food-section"  *ngFor="let items of listItems">
+        <div class="row" >
+            <div class="col name-section">
+                <p>Item Name: {{items.itemName}}</p>
+                <p>Description: {{items.description}}</p>
+                <p>{{items.veg ? 'Veg' : 'Non-veg'}}</p>
+            </div>
+            <div class="col center-section">
+                <p>Price: {{items.price}}</p>
+            </div>
+            <div class="col center-section quantity">
+                    <button class="decrement" (click)="updateQuantity('dec', items.id)">-</button>
+                    <span>{{items.quantity}}</span> <!-- Quantity -->
+                    <button class="increment" (click)="updateQuantity('inc', items.id)">+</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button" (click)="placeOrder()">Place Order</button>
+      </div>
+</div>
